@@ -2,10 +2,9 @@
 import {cookies} from "next/headers";
 import {redirect} from "next/navigation";
 
-export default async function Home({...props}) {
+export default async function Home() {
   const cookieStore = cookies()
   const isAuth = cookieStore.get('token' as any)
-  console.log('props', props)
   if (typeof isAuth === 'undefined') {
     redirect('/auth')
   } else {
